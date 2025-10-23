@@ -18,4 +18,4 @@ function KitapListe({ kitaplar, favoriyeEkle, favoriler }) {
   );
 }
 
-export default Kitaplistesi;
+export default KitapListe;

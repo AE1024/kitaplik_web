@@ -1,4 +1,5 @@
 import React from "react";
+import './KitapKarti.css';
 
 function KitapKarti({ baslik, yazar, kategori, favorideMi, onFavoriyeEkle }) {
 
