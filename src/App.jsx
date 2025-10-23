@@ -6,9 +6,29 @@ import KategoriFiltre from "./components/KategoriFiltre";
 import FavoriPaneli from "./components/FavoriPaneli";
 
 function App() {
-  const [aramaMetni, setAramaMetni] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [favoriler, setFavoriler] = useState([]); // Favoriler state'i buraya taşındı
+ const [aramaMetni, setAramaMetni] = useState(() => {
+ const kayitliAramaMetni = localStorage.getItem("aramaMetni");
+ return kayitliAramaMetni || ""; 
+ });
+
+ const [selectedCategory, setSelectedCategory] = useState("All");
+
+
+ const [favoriler, setFavoriler] = useState(() => {
+ const kayitliFavoriler = localStorage.getItem("favoriler");
+ return kayitliFavoriler ? JSON.parse(kayitliFavoriler) : [];
+ });
+
+
+ useEffect(() => {
+  localStorage.setItem("aramaMetni", aramaMetni);
+ }, [aramaMetni]); 
+
+
+ useEffect(() => {
+ localStorage.setItem("favoriler", JSON.stringify(favoriler));
+ }, [favoriler]); 
+  
 
   const kitap_listesi = [
     { id: 1, baslik: "Suç ve Ceza", yazar: "Fyodor Dostoyevski", kategori: "Klasik" },
