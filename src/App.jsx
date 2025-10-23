@@ -18,6 +18,14 @@ function App() {
     { id: 5, baslik: "Simyacı", yazar: "Paulo Coelho", kategori: "Roman" },
     { id: 6, baslik: "Fahrenheit 451", yazar: "Ray Bradbury", kategori: "Bilim Kurgu" },
   ];
+  useEffect(() => {
+ localStorage.setItem("aramaMetni", aramaMetni);
+ }, [aramaMetni]); 
+
+
+ useEffect(() => {
+localStorage.setItem("favoriler", JSON.stringify(favoriler));
+ }, [favoriler]); 
 
   // Favori ekleme fonksiyonu
   const favoriyeEkle = (kitap) => {
